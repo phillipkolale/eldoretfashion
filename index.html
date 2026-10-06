@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eldoret Fashion — Your Partner in Fashion Design</title>
+<meta name="description" content="Eldoret Fashion — a clothing line at Zion Mall, Eldoret, dressing every age and body for casual and official occasions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #121011;
+    --bg-deep: #0B0A0A;
+    --panel: #1B1818;
+    --panel-2: #171414;
+    --paper: #F2EEE6;
+    --ink: #171512;
+    --cobalt: #3350FF;
+    --cobalt-soft: rgba(51,80,255,0.18);
+    --line: rgba(242,238,230,0.14);
+    --line-soft: rgba(242,238,230,0.07);
+    --text: #F2EEE6;
+    --text-dim: #A9A49A;
+    --text-faint: #6C6860;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 85% -10%, #1B2450 0%, var(--bg) 46%),
+      var(--bg);
+    color: var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,h4,.display{
+    font-family:'Bebas Neue', 'Inter', sans-serif;
+    font-weight:400;
+    line-height:0.95;
+    margin:0;
+    letter-spacing:0.01em;
+    text-transform: uppercase;
+  }
+  p{ margin:0; font-family:'Inter', sans-serif; text-transform:none; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; }
+  ::selection{ background: var(--cobalt); color:#F2EEE6; }
+  :focus-visible{ outline:2px solid var(--cobalt); outline-offset:3px; }
+
+  .wrap{ max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,56px); }
+
+  .folio{
+    display:flex; align-items:center; gap:14px;
+    font-family:'Inter', sans-serif; font-weight:600;
+    font-size:13px; color: var(--cobalt); margin-bottom:18px;
+    letter-spacing: 0.04em;
+  }
+  .folio::after{ content:""; flex:1; height:1px; background: var(--line); }
+
+  /* ---------- top nav ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(11,10,10,0.88);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,56px);
+    height:76px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; cursor:pointer; }
+  .brand strong{
+    font-family:'Bebas Neue', sans-serif; font-size:26px; letter-spacing:0.02em;
+    color: var(--text); line-height:1;
+  }
+  .brand span{ font-size:10.5px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; }
+
+  nav.links{ display:flex; gap:4px; align-items:center; }
+  nav.links button{
+    background:none; border:none; cursor:pointer;
+    color: var(--text-dim); font-size:13.5px; padding:9px 16px; position:relative;
+    text-transform:uppercase; letter-spacing:0.05em; font-weight:600;
+    transition: color .2s ease;
+  }
+  nav.links button:hover{ color: var(--text); }
+  nav.links button.active{ color: var(--text); }
+  nav.links button.active::after{
+    content:""; position:absolute; left:16px; right:16px; bottom:2px; height:2px; background: var(--cobalt);
+  }
+  .nav-cta{ background: var(--cobalt) !important; color: #fff !important; margin-left:10px; }
+  .nav-cta:hover{ opacity:0.85; }
+
+  .hamburger{
+    display:none; background:none; border:1px solid var(--line);
+    width:40px; height:40px; cursor:pointer; position:relative;
+  }
+  .hamburger span, .hamburger span::before, .hamburger span::after{
+    content:""; position:absolute; left:10px; right:10px; height:1px; background: var(--text);
+  }
+  .hamburger span{ top:19px; }
+  .hamburger span::before{ top:-6px; }
+  .hamburger span::after{ top:6px; }
+
+  /* ---------- page shell / transitions ---------- */
+  main{ margin-top:76px; }
+  .page{ display:none; min-height:calc(100vh - 76px); padding-bottom:90px; }
+  .page.active{ display:block; }
+  .page.enter{ animation: pageIn .6s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes pageIn{
+    from{ opacity:0; transform: perspective(1200px) rotateX(3deg) translateY(20px); }
+    to{ opacity:1; transform: perspective(1200px) rotateX(0) translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .page.enter{ animation:none; } html{ scroll-behavior:auto; } }
+
+  section{ padding: clamp(56px,8vw,96px) 0; }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:44px; border-bottom:1px solid var(--line); padding-bottom:18px;
+  }
+  .section-head h2{ font-size: clamp(38px,5.4vw,58px); }
+  .section-head .idx{ font-size:13px; color: var(--text-faint); white-space:nowrap; padding-bottom:8px; letter-spacing:0.05em; }
+
+  /* ================= HOME / HERO ================= */
+  .hero{
+    padding-top: clamp(40px,7vw,72px);
+    display:grid; grid-template-columns: 1fr 0.85fr; gap:40px; align-items:center;
+  }
+  .hero-copy h1{ font-size: clamp(48px,7.4vw,92px); color: var(--text); }
+  .hero-copy h1 span{ color: var(--cobalt); }
+  .hero-copy .pitch{ margin-top:22px; max-width:44ch; color: var(--text-dim); font-size:17px; }
+  .hero-actions{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Inter', sans-serif; font-weight:700; font-size:13.5px; padding:15px 26px;
+    border:1px solid var(--line); cursor:pointer; background:transparent; color: var(--text);
+    text-transform:uppercase; letter-spacing:0.06em;
+    transition: border-color .2s ease, transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{ background: var(--cobalt); border-color: var(--cobalt); color:#fff; }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-ghost:hover{ border-color: var(--cobalt); color: var(--cobalt); transform: translateY(-2px); }
+
+  .hero-stats{
+    margin-top:46px; display:grid; grid-template-columns: repeat(4,1fr);
+    border-top:1px solid var(--line); padding-top:22px; gap:10px;
+  }
+  .stat b{ display:block; font-family:'Bebas Neue',sans-serif; font-size:clamp(24px,2.8vw,30px); color: var(--text); }
+  .stat span{ font-size:11px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.04em; }
+
+  .fabric-stage{ position:relative; height: clamp(320px,42vw,480px); }
+  .fabric-stage canvas{ width:100%; height:100%; display:block; }
+  .fabric-caption{ position:absolute; bottom:6px; left:6px; font-size:11px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; }
+
+  /* ---------- marquee ticker ---------- */
+  .ticker{
+    margin-top: 64px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding: 18px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .ticker-track{
+    display:inline-flex;
+    animation: ticker 28s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .ticker-track{ animation:none; } }
+  .ticker-track span{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: clamp(18px,2.4vw,26px);
+    color: var(--text-dim);
+    padding: 0 26px;
+    letter-spacing: 0.03em;
+  }
+  .ticker-track span i{ color: var(--cobalt); font-style:normal; margin-left:26px; }
+  @keyframes ticker{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+
+  .why-strip{
+    margin-top:60px;
+    display:grid; grid-template-columns: repeat(4,1fr); gap:24px;
+  }
+  .why-item h4{ font-family:'Inter',sans-serif; text-transform:none; font-weight:700; font-size:16px; margin-bottom:8px; }
+  .why-item p{ font-size:14px; color: var(--text-dim); }
+
+  /* ================= CARD PRIMITIVES ================= */
+  .card{
+    background: linear-gradient(180deg, var(--panel), var(--bg-deep));
+    border:1px solid var(--line); padding:26px; position:relative;
+    transition: transform .25s ease, border-color .25s ease; will-change: transform;
+  }
+  .card:hover{ border-color: rgba(51,80,255,0.55); }
+
+  /* ================= ABOUT ================= */
+  .about-grid{ display:grid; grid-template-columns: 0.95fr 1.05fr; gap:56px; }
+  .about-lede p{ color: var(--text-dim); margin-bottom:16px; font-size:16px; }
+  .about-lede p:first-child{
+    font-size:22px; color: var(--text); font-family:'Bebas Neue',serif; text-transform:none; letter-spacing:0.01em; line-height:1.4;
+  }
+  .about-tags{ margin-top:26px; display:flex; flex-wrap:wrap; gap:10px; }
+  .about-tags span{ border:1px solid var(--line); padding:7px 15px; font-size:12px; color: var(--text-dim); text-transform:uppercase; letter-spacing:0.04em; }
+
+  .subhead{ font-size:13px; color: var(--text-faint); margin:56px 0 22px; padding-top:26px; border-top:1px solid var(--line); text-transform:uppercase; letter-spacing:0.06em; }
+
+  .dept-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; }
+  .dept-card h4{ font-family:'Inter',sans-serif; text-transform:none; font-weight:700; font-size:17px; margin-bottom:8px; }
+  .dept-card p{ font-size:14px; color: var(--text-dim); }
+
+  .location-panel{
+    margin-top:56px; padding: 34px clamp(24px,4vw,44px);
+    background: linear-gradient(135deg, var(--cobalt-soft), transparent 60%), var(--panel-2);
+    border:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .location-panel h3{ font-size: clamp(24px,3vw,32px); }
+  .location-panel p{ color: var(--text-dim); font-size:14.5px; margin-top:8px; }
+
+  .notice{ margin-top:36px; padding:16px 18px; border:1px solid var(--line); font-size:13px; color: var(--text-faint); }
+
+  /* ================= CATEGORIES ================= */
+  .cat-intro{ max-width: 60ch; color: var(--text-dim); font-size:16px; margin-bottom: 44px; }
+  .cat-group{ margin-bottom: 54px; }
+  .cat-group-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:20px; }
+  .cat-group-head h3{ font-family:'Inter',sans-serif; text-transform:none; font-weight:700; font-size:20px; }
+  .cat-group-head span{ font-size:12px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; }
+  .cat-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:16px; perspective:1000px; }
+  .cat-card{ transform: rotateX(var(--ry,0deg)) rotateY(var(--rx,0deg)); padding:22px; }
+  .cat-card .icon{ width:30px; height:30px; margin-bottom:16px; color: var(--cobalt); }
+  .cat-card h4{ font-family:'Inter',sans-serif; text-transform:none; font-weight:700; font-size:15.5px; margin-bottom:6px; }
+  .cat-card p{ font-size:13px; color: var(--text-dim); }
+
+  /* ================= CONTACT ================= */
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:56px; }
+  .contact-list{ margin-top:28px; }
+  .contact-list li{ display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--line); font-size:15px; gap:14px; }
+  .contact-list li span:first-child{ color: var(--text-faint); font-size:12.5px; text-transform:uppercase; letter-spacing:0.04em; white-space:nowrap; }
+  .contact-list li a, .contact-list li span:last-child{ color: var(--text); text-align:right; }
+  .contact-list li a:hover{ color: var(--cobalt); }
+
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:12px; color: var(--text-faint); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.04em; }
+  .field input, .field select, .field textarea{
+    width:100%; background: var(--bg-deep); border:1px solid var(--line); color: var(--text);
+    padding:12px 14px; font-family:'Inter',sans-serif; font-size:14.5px; resize:vertical;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color: var(--cobalt); outline:none; }
+  .form-msg{ font-size:13px; color: var(--cobalt); margin-top:10px; min-height:16px; }
+
+  footer{ border-top:1px solid var(--line); padding: 46px 0 30px; }
+  .footer-grid{ display:grid; grid-template-columns: 1.3fr 1fr 1fr; gap:32px; margin-bottom:32px; }
+  .footer-grid h5{ font-family:'Inter',sans-serif; font-weight:700; font-size:13px; color: var(--cobalt); margin-bottom:14px; text-transform:uppercase; letter-spacing:0.05em; }
+  .footer-grid li{ font-size:13.5px; color: var(--text-dim); padding:5px 0; }
+  .footer-grid a:hover{ color: var(--cobalt); }
+  .footer-bottom{
+    border-top:1px solid var(--line); padding-top:20px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:12.5px; color: var(--text-faint);
+  }
+  .footer-bottom a{ color: var(--text-dim); }
+  .footer-bottom a:hover{ color: var(--cobalt); }
+
+  @media (max-width:900px){
+    nav.links{
+      position:fixed; top:76px; left:0; right:0; background: var(--bg-deep);
+      border-bottom:1px solid var(--line); flex-direction:column; align-items:stretch;
+      padding:10px 20px 20px; display:none;
+    }
+    nav.links.open{ display:flex; }
+    nav.links button{ text-align:left; padding:13px 4px; border-bottom:1px solid var(--line-soft); }
+    .nav-cta{ margin:10px 0 0; text-align:center; }
+    .hamburger{ display:block; }
+
+    .hero{ grid-template-columns:1fr; }
+    .hero-stats{ grid-template-columns: repeat(2,1fr); row-gap:22px; }
+    .why-strip{ grid-template-columns: 1fr 1fr; }
+    .about-grid, .contact-grid{ grid-template-columns:1fr; }
+    .dept-grid, .cat-grid{ grid-template-columns: 1fr 1fr; }
+    .footer-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width:560px){
+    .why-strip, .dept-grid, .cat-grid, .footer-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand" data-nav="home">
+      <div class="brand-text">
+        <strong>Eldoret Fashion</strong><br>
+        <span>Zion Mall · Eldoret</span>
+      </div>
+    </div>
+    <nav class="links" id="navLinks">
+      <button data-nav="home" class="active">Home</button>
+      <button data-nav="about">About</button>
+      <button data-nav="categories">Categories</button>
+      <button data-nav="contact" class="nav-cta">Contact</button>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HOME ================= -->
+  <section class="page active" id="page-home" data-page="home">
+    <div class="wrap">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="folio">Zion Mall, Eldoret</p>
+          <h1>Your partner<br>in <span>fashion</span>.</h1>
+          <p class="pitch">Eldoret Fashion is a clothing line built around every client's taste — casual, official, everyday. We dress every age, every body type, every budget, with a modern and trendy flair.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-nav="categories">Shop categories</button>
+            <button class="btn btn-ghost" data-nav="about">Our story</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><b>12+</b><span>Categories</span></div>
+            <div class="stat"><b>All ages</b><span>Adult &amp; kids' wear</span></div>
+            <div class="stat"><b>2 looks</b><span>Casual &amp; official</span></div>
+            <div class="stat"><b>1</b><span>Store, Zion Mall</span></div>
+          </div>
+        </div>
+
+        <div class="fabric-stage" id="fabricStage" aria-hidden="true">
+          <canvas id="fabricCanvas"></canvas>
+          <p class="fabric-caption">Cut, draped, worn.</p>
+        </div>
+      </div>
+
+      <div class="ticker">
+        <div class="ticker-track" id="tickerTrack"></div>
+      </div>
+
+      <div class="why-strip">
+        <div class="why-item"><h4>For every body</h4><p>Sizes and cuts chosen for real people, not just a size chart.</p></div>
+        <div class="why-item"><h4>Casual to official</h4><p>One wardrobe that moves from the desk to the weekend.</p></div>
+        <div class="why-item"><h4>Kids included</h4><p>Boys' and girls' lines built with the same care as adult wear.</p></div>
+        <div class="why-item"><h4>Priced to wear often</h4><p>A professional look that's affordable, not occasional.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="page" id="page-about" data-page="about">
+    <div class="wrap">
+      <div class="section-head"><h2>About</h2><span class="idx">Our story</span></div>
+
+      <div class="about-grid">
+        <div class="about-lede">
+          <p>A clothing line for the way people actually dress.</p>
+          <p>Eldoret Fashion offers everyday, home, and weekend essentials with a modern, trendy flair — pieces that work for the office and just as easily carry you into cocktails after.</p>
+          <p>We dress every gender, every age, and every body type. Whatever your status or background, there's a professional look here that's suitable and affordable for you.</p>
+          <p>You'll find us at Zion Mall, Eldoret — come try things on, not just scroll past them.</p>
+          <div class="about-tags">
+            <span>Modern</span><span>Trendy</span><span>Affordable</span><span>Inclusive sizing</span><span>Everyday to formal</span>
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <p class="folio">What we stand for</p>
+          <p style="color:var(--text-dim); font-size:15px; margin-bottom:28px;">Fashion shouldn't ask you to change your body or your budget to fit in. We build a range wide enough that most people who walk in leave with something they'll actually wear on repeat.</p>
+          <p class="folio">Who we dress</p>
+          <p style="color:var(--text-dim); font-size:15px;">Adults dressing for work and for the weekend, and children whose wear gets the same attention to fit and finish as anyone else's.</p>
+        </div>
+      </div>
+
+      <p class="subhead">What we carry</p>
+      <div class="dept-grid">
+        <div class="card dept-card"><h4>Adult Wear</h4><p>Official and casual pieces for men and women — desk-ready during the week, easy for the weekend.</p></div>
+        <div class="card dept-card"><h4>Children's Wear</h4><p>Boys' and girls' fashion built to the same standard as the adult line, not an afterthought.</p></div>
+      </div>
+
+      <div class="location-panel">
+        <div>
+          <h3>Find us at Zion Mall</h3>
+          <p>Come in, try things on, and talk to someone who actually knows the range.</p>
+        </div>
+        <button class="btn btn-primary" data-nav="contact">Get directions</button>
+      </div>
+
+      <p class="notice">Store details and copy on this page are placeholder content for the template — confirm hours and exact unit number before publishing.</p>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORIES ================= -->
+  <section class="page" id="page-categories" data-page="categories">
+    <div class="wrap">
+      <div class="section-head"><h2>Categories</h2><span class="idx">Shop by department</span></div>
+      <p class="cat-intro">From office-ready to weekend-easy, for every age in the family — here's everything Eldoret Fashion carries, grouped by department.</p>
+
+      <div class="cat-group">
+        <div class="cat-group-head"><h3>Men's Wear</h3><span>Official &amp; casual</span></div>
+        <div class="cat-grid" id="menGrid"></div>
+      </div>
+      <div class="cat-group">
+        <div class="cat-group-head"><h3>Women's Wear</h3><span>Official &amp; casual</span></div>
+        <div class="cat-grid" id="womenGrid"></div>
+      </div>
+      <div class="cat-group">
+        <div class="cat-group-head"><h3>Kids' Wear</h3><span>Boys &amp; girls</span></div>
+        <div class="cat-grid" id="kidsGrid"></div>
+      </div>
+      <div class="cat-group">
+        <div class="cat-group-head"><h3>Footwear</h3><span>Official, casual &amp; kids'</span></div>
+        <div class="cat-grid" id="shoeGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="page" id="page-contact" data-page="contact">
+    <div class="wrap">
+      <div class="section-head"><h2>Contact</h2><span class="idx">Visit or reach out</span></div>
+
+      <div class="contact-grid">
+        <div>
+          <p style="max-width:44ch; color:var(--text-dim); font-size:16px;">Questions about a piece, sizing, or stock — reach out and we'll get back to you, or come find us at Zion Mall.</p>
+
+          <ul class="contact-list">
+            <li><span>Store</span><span>Zion Mall, Eldoret, Kenya</span></li>
+            <li><span>Phone</span><a href="tel:+254707385519">+254 707 385 519</a></li>
+            <li><span>Email</span><a href="mailto:eldoretfashion@outlook.com">eldoretfashion@outlook.com</a></li>
+            <li><span>Store hours</span><span>Mon–Sat, 9:00 – 19:00</span></li>
+          </ul>
+
+          <div class="notice">Store hours above are a placeholder — update with the real opening times.</div>
+        </div>
+
+        <div>
+          <form id="contactForm">
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" type="text" required placeholder="Your full name">
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" required placeholder="you@example.com">
+            </div>
+            <div class="field">
+              <label for="cf-reason">This is about</label>
+              <select id="cf-reason">
+                <option>Stock enquiry</option>
+                <option>Sizing help</option>
+                <option>Custom order</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" rows="5" required placeholder="Tell us what you're looking for"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <p class="form-msg" id="formMsg"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h5>Eldoret Fashion</h5>
+        <p style="font-size:13.5px; color:var(--text-dim); max-width:32ch;">Your partner in fashion design — casual and official wear for every age, at Zion Mall, Eldoret.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#" data-nav="home">Home</a></li>
+          <li><a href="#" data-nav="about">About</a></li>
+          <li><a href="#" data-nav="categories">Categories</a></li>
+          <li><a href="#" data-nav="contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Find Us</h5>
+        <ul>
+          <li>Zion Mall, Eldoret</li>
+          <li>+254 707 385 519</li>
+          <li>eldoretfashion@outlook.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Eldoret Fashion.</span>
+      <span>Site by <a href="https://phillipkolale.github.io/apluswebsiteandgraphicsdevelopers/Home.html" target="_blank" rel="noopener">A+ Website &amp; Graphics Developers</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- Navigation ---------------- */
+  const pages = document.querySelectorAll('.page');
+  const navLinks = document.getElementById('navLinks');
+  const hamburger = document.getElementById('hamburger');
+
+  function goTo(name){
+    document.querySelectorAll('#navLinks button').forEach(b => b.classList.toggle('active', b.dataset.nav === name));
+    pages.forEach(p => {
+      if(p.dataset.page === name){
+        p.classList.add('active'); p.classList.remove('enter');
+        void p.offsetWidth; p.classList.add('enter');
+      } else { p.classList.remove('active'); }
+    });
+    navLinks.classList.remove('open');
+    window.scrollTo({top:0});
+  }
+  document.querySelectorAll('[data-nav]').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); goTo(btn.dataset.nav); }));
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  function applyTilt(card){
+    if(reduceMotion) return;
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.setProperty('--rx', (x * 7).toFixed(2) + 'deg');
+      card.style.setProperty('--ry', (-y * 7).toFixed(2) + 'deg');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg');
+    });
+  }
+
+  /* ---------------- Ticker ---------------- */
+  const tickerWords = ["Men's Official","Men's Casual","Women's Official","Women's Casual","Boys' Fashion","Girls' Fashion","Men's Shoes","Women's Shoes","Kids' Shoes"];
+  const trackEl = document.getElementById('tickerTrack');
+  function buildTicker(){
+    let html = '';
+    for(let rep=0; rep<2; rep++){
+      tickerWords.forEach(w => { html += `<span>${w}<i>★</i></span>`; });
+    }
+    trackEl.innerHTML = html;
+  }
+  buildTicker();
+
+  /* ---------------- Category icons (simple line-art SVGs) ---------------- */
+  const icons = {
+    shirt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3l4 2 4-2 4 4-3 3v11H7V10L4 7z"/></svg>',
+    dress: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 3h6l1 4-2 2 4 12H6L10 9 8 7z"/></svg>',
+    kid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 4l3 2 3-2 3 3-2 2v9H8v-9L6 7z"/></svg>',
+    shoe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17c0-2 1-3 3-4l4-3 2 2 4-1 5 4v3z"/></svg>'
+  };
+
+  const categories = {
+    menGrid: [
+      { icon:'shirt', name:"Men's Official", desc:"Tailored shirts and trousers for the office and beyond." },
+      { icon:'shirt', name:"Men's Casual", desc:"Relaxed fits for weekends and everything in between." }
+    ],
+    womenGrid: [
+      { icon:'dress', name:"Women's Official", desc:"Polished pieces built for the desk and client meetings." },
+      { icon:'dress', name:"Women's Casual", desc:"Everyday wear with a modern, trendy edge." }
+    ],
+    kidsGrid: [
+      { icon:'kid', name:"Boys' Fashion", desc:"Durable, comfortable pieces built for actual kids." },
+      { icon:'kid', name:"Girls' Fashion", desc:"Playful, well-made fits from toddler to teen." }
+    ],
+    shoeGrid: [
+      { icon:'shoe', name:"Men's Official Shoes", desc:"Polished leather for the office and formal events." },
+      { icon:'shoe', name:"Men's Casual Shoes", desc:"Everyday footwear built to actually last." },
+      { icon:'shoe', name:"Women's Official Shoes", desc:"Comfortable enough to wear all day, every day." },
+      { icon:'shoe', name:"Women's Casual Shoes", desc:"Weekend-ready, from sneakers to sandals." },
+      { icon:'shoe', name:"Boys' Shoes", desc:"Built to survive a full school term." },
+      { icon:'shoe', name:"Girls' Shoes", desc:"Comfortable, durable, and easy to love." }
+    ]
+  };
+
+  Object.keys(categories).forEach(gridId => {
+    const grid = document.getElementById(gridId);
+    categories[gridId].forEach(c => {
+      const card = document.createElement('div');
+      card.className = 'card cat-card';
+      card.innerHTML = `<div class="icon">${icons[c.icon]}</div><h4>${c.name}</h4><p>${c.desc}</p>`;
+      grid.appendChild(card);
+      applyTilt(card);
+    });
+  });
+
+  /* ---------------- Contact form (mailto) ---------------- */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value;
+    const email = document.getElementById('cf-email').value;
+    const reason = document.getElementById('cf-reason').value;
+    const message = document.getElementById('cf-message').value;
+    const body = `From: ${name} (${email})\nReason: ${reason}\n\n${message}`;
+    window.location.href = `mailto:eldoretfashion@outlook.com?subject=${encodeURIComponent(reason)}&body=${encodeURIComponent(body)}`;
+    document.getElementById('formMsg').textContent = 'Opening your email client…';
+  });
+
+  /* ================= 3D rippling fabric (Three.js hero) ================= */
+  (function(){
+    const stage = document.getElementById('fabricStage');
+    const canvas = document.getElementById('fabricCanvas');
+    if(!window.THREE || !stage || !canvas) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(42, stage.clientWidth / stage.clientHeight, 0.1, 100);
+    camera.position.set(0, 1.4, 4.4);
+    camera.lookAt(0, 0, 0);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(stage.clientWidth, stage.clientHeight);
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const SEG = 26;
+    const geo = new THREE.PlaneGeometry(3.6, 3.2, SEG, SEG);
+    const wire = new THREE.WireframeGeometry(geo);
+    const mat = new THREE.LineBasicMaterial({ color: 0x3350FF, transparent:true, opacity:0.55 });
+    const fabric = new THREE.LineSegments(wire, mat);
+    group.add(fabric);
+
+    // second, softer layer behind for depth
+    const mat2 = new THREE.LineBasicMaterial({ color: 0xF2EEE6, transparent:true, opacity:0.12 });
+    const fabric2 = new THREE.LineSegments(wire.clone(), mat2);
+    fabric2.position.z = -0.4;
+    group.add(fabric2);
+
+    group.rotation.x = -0.55;
+
+    const basePositions = geo.attributes.position.array.slice();
+
+    let t = 0;
+    let raf;
+    function rippleMesh(mesh, offset){
+      const posAttr = mesh.geometry.attributes.position;
+      const arr = posAttr.array;
+      for(let i=0;i<arr.length;i+=3){
+        const x = basePositions[i];
+        const y = basePositions[i+1];
+        arr[i+2] = Math.sin(x*1.1 + t + offset) * 0.18 + Math.cos(y*0.9 + t*0.8 + offset) * 0.12;
+      }
+      posAttr.needsUpdate = true;
+    }
+
+    // wireframe geometry doesn't map 1:1 to plane geometry indices, so rebuild each frame from a fresh plane instead
+    function makeRippledWire(offset){
+      const g = new THREE.PlaneGeometry(3.6, 3.2, SEG, SEG);
+      const pos = g.attributes.position;
+      for(let i=0;i<pos.count;i++){
+        const x = pos.getX(i), y = pos.getY(i);
+        const z = Math.sin(x*1.1 + t + offset) * 0.18 + Math.cos(y*0.9 + t*0.8 + offset) * 0.12;
+        pos.setZ(i, z);
+      }
+      pos.needsUpdate = true;
+      return new THREE.WireframeGeometry(g);
+    }
+
+    function animate(){
+      raf = requestAnimationFrame(animate);
+      if(!reduceMotion){
+        t += 0.018;
+        fabric.geometry.dispose();
+        fabric.geometry = makeRippledWire(0);
+        fabric2.geometry.dispose();
+        fabric2.geometry = makeRippledWire(1.4);
+        group.rotation.y = Math.sin(t*0.25) * 0.18;
+      }
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    function onResize(){
+      const w = stage.clientWidth, h = stage.clientHeight;
+      if(!w || !h) return;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+    window.addEventListener('resize', onResize);
+    onResize();
+  })();
+</script>
+</body>
+</html>
